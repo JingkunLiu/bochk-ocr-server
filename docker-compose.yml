@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ocr-server:
+    build: .
+    container_name: local-captcha-ocr
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
