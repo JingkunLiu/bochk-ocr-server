@@ -128,6 +128,7 @@ def recognize(req: ImageReq):
                 },
             ],
             stream = False,
+            extra_body= { "thinking": { "type": "disabled" } }
         )
         return {"code": 200, "result": response}
     except Exception as e:
