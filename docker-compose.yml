@@ -1,11 +1,13 @@
-version: '3.8'
-
+name: bochk-project
 services:
   ocr-server:
     build: .
-    container_name: local-captcha-ocr
+    image: bochk-ocr-server:0.0.1
+    container_name: bochk-ocr-server
     ports:
-      - "8080:8080"
+      - "38080:8080"
     restart: always
     environment:
       - TZ=Asia/Shanghai
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - MOONSHOT_API_KEY=${MOONSHOT_API_KEY}

@@ -1,5 +1,4 @@
-# ddddocr 在 Python 3.9 环境下运行最为稳定
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
@@ -11,13 +10,12 @@ RUN apt-get update && apt-get install -y \
 
 COPY requirements.txt .
 
-# 使用清华源加速国内依赖安装
-RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install --upgrade pip
+RUN pip install openai
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# 暴露 FastAPI 默认端口
 EXPOSE 8080
 
-# 启动服务
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8080"]
