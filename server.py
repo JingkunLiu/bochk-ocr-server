@@ -19,6 +19,7 @@ app.add_middleware(
 
 # 初始化 ddddocr (show_ad=False 防止在控制台打印广告)
 ocr = ddddocr.DdddOcr(show_ad=False)
+ocr.set_ranges(6) # 设置识别范围为数字和字母 "0-9a-zA-Z"
 
 class ImageReq(BaseModel):
     image_base64: str
